@@ -32,7 +32,7 @@ describe("Testing getTypes", () => {
         ],
       },
     ];
-    const register = new PhoneRegister(phones);
+    const register = new PhoneRegister(testData);
     expect(register.getTypes()).toEqual(["work"]);
   });
   test("Test 3: no persons in phone register", () => {
@@ -97,5 +97,25 @@ describe("Testing getTypes", () => {
     ];
     const register = new PhoneRegister(testData);
     expect(register.getTypes()).toEqual(["home"]);
+  });
+});
+
+describe("testing getTypes method test.each version", () => {
+  const testData = require("../getTypesTestCases.json");
+  test("Test 6 version 2", () => {
+    const register = new PhoneRegister(testData.test6);
+    expect(register.getTypes()).toEqual(["home"]);
+  });
+  const testValues = [
+    //a            //expected
+    [testData.test2, ["work"]],
+    [testData.test3, []],
+    [testData.test4, []],
+    [testData.test5, []],
+    [testData.test6, ["home"]],
+  ];
+  test.each(testValues)("testing ...", (a, expected) => {
+    const register = new PhoneRegister(a);
+    expect(register.getTypes()).toEqual(expected);
   });
 });
