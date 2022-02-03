@@ -146,7 +146,7 @@ The phone object in phones array is of form:
 ```
 
 If a person doesn't have a phone (the phone field is an empty array or there is no phones field), then the person is not added into the result array.
-If all phones are missing, an empty array [] is returned.
+If all phones are missing or phones array is empty, an empty array [] is returned.
 If all persons are missing, an empty array is returned.
 
 ## **getName(number)**
@@ -160,7 +160,7 @@ The method searches the given phone number from the telephone registry. If the n
 If no phone with given number is found, the methos returns `null`
 If the parameter is missing `null` is also returned.
 
-### Example who has number "87654321"
+### Example who has number "12345678"
 
 The returned value will be:
 
