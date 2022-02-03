@@ -1,0 +1,60 @@
+{
+  "test2": [
+    {
+      "firstname": "Leila",
+      "lastname": "Hökki",
+      "phones": [
+        {
+          "type": "work",
+          "number": "22112211"
+        }
+      ]
+    }
+  ],
+  "test3": [],
+  "test4": [
+    {
+      "firstname": "Leila",
+      "lastname": "Hökki"
+    },
+    {
+      "firstname": "Matt",
+      "lastname": "River"
+    }
+  ],
+  "test5": [
+    {
+      "firstname": "Leila",
+      "lastname": "Hökki",
+      "phones": []
+    },
+    {
+      "firstname": "Matt",
+      "lastname": "River",
+      "phones": []
+    }
+  ],
+  "test6": [
+    {
+      "firstname": "Leila",
+      "lastname": "Hökki",
+      "phones": [
+        {
+          "type": "home",
+          "number": "12345678"
+        },
+        {
+          "type": "",
+          "number": "12345678"
+        },
+        {
+          "type": null,
+          "number": "12345678"
+        },
+        {
+          "number": "33993399"
+        }
+      ]
+    }
+  ]
+}

@@ -5,4 +5,5 @@ module.exports = class PhoneRegister {
     if (!data) throw new Error("phone data missing");
     this.phoneRegister = data;
   }
+  getTypes()
 };

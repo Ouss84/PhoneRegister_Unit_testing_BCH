@@ -49,7 +49,7 @@ Data will be in a json file
 
 ## Class PhoneRegister
 
-Persons are uniquely identified by firstname and lastname. There can't be two persons with the same name.
+Persons are uniquely identified by firstname and lastname. There can't be two persons object with the same name. Phone numbers are also unique.
 
 ## **constractor(data)**
 
@@ -59,6 +59,7 @@ Phones json array is passed as a parameter `data`. If the parameter is missing, 
 
 returns all phone types in an array. The type is added to the result array only once.
 If there are no phones or no persons, an empty array is returned.
+If the type is missing or is empty string or null it is not added to the array.
 
 For exemple:
 
