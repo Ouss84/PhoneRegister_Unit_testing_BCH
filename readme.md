@@ -49,7 +49,7 @@ Data will be in a json file
 
 ## Class PhoneRegister
 
-Persons are uniquely identified by firstname and lastname.
+Persons are uniquely identified by firstname and lastname. There can't be two persons with the same name.
 
 ## **constractor(data)**
 
@@ -109,16 +109,34 @@ The format of the returned array of object is:
 ]
 ```
 
+### Example type work:
+
+```json
+[
+  {
+    "firstname": "Leila",
+    "lastname": "Hökki",
+    "number": { "type": "work", "tel": "87654321" }
+  },
+  {
+    "firstname": "Leila",
+    "lastname": "Hökki",
+    "number": { "type": "work", "tel": "05040302" }
+  },
+  {
+    "firstname": "Matt",
+    "lastname": "River",
+    "number": { "type": "work", "tel": "32145678" }
+  }
+]
+```
+
 ## **getAllNumbers()**
 
 Returns all phone numbers in an array, each as an object of form:
 
 ```json
-{
-  "firstname": "",
-  "lastname": "",
-  "phones": []
-}
+{ "firstname": "", "lastname": "", "phones": [] }
 ```
 
 The phone object in phones array is of form:
@@ -127,4 +145,25 @@ The phone object in phones array is of form:
 { "type": "", "number": "" }
 ```
 
+If a person doesn't have a phone (the phone field is an empty array or there is no phones field), then the person is not added into the result array.
+If all phones are missing, an empty array [] is returned.
+If all persons are missing, an empty array is returned.
+
 ## **getName(number)**
+
+The method searches the given phone number from the telephone registry. If the number is found, the method returns an json object of form:
+
+```json
+{ "firstname": "", "lastname": "" }
+```
+
+If no phone with given number is found, the methos returns `null`
+If the parameter is missing `null` is also returned.
+
+### Example who has number "87654321"
+
+The returned value will be:
+
+```json
+{ "firstname": "Leila", "lastname": "Hökki" }
+```
