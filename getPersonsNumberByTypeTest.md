@@ -49,7 +49,19 @@ returns
 ["0453341223"]
 ```
 
-## Test 3: using wrong type or name returns an empty array
+## Test 3: get with parameters Matt, River, home
+
+```js
+register.getPersonsNumbersByType("Matt", "River", "home");
+```
+
+returns
+
+```json
+["00110011"]
+```
+
+## Test 4: using wrong type or name returns an empty array
 
 ```js
 register.getPersonsNumbersByType("Matt", "River", "x");
@@ -63,3 +75,13 @@ returns
 ```json
 []
 ```
+
+## test 5: missing parameter throws an exception
+
+```js
+register.getPersonsNumberByType("Matt", "River");
+register.getPersonsNumberByType("Matt");
+register.getPersonsNumberByType();
+```
+
+throws an exception `missing parameters`

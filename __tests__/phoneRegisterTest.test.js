@@ -119,3 +119,50 @@ describe("testing getTypes method test.each version", () => {
     expect(register.getTypes()).toEqual(expected);
   });
 });
+
+describe("getPersonsNumbersByType(firstname,lastname,type)", () => {
+  const register = new PhoneRegister(phones);
+  test("Test 1: get with parameters Leila, Hökki, work", () => {
+    expect(register.getPersonsNumberByType("Leila", "Hökki", "work")).toEqual([
+      "22112211",
+      "33993399",
+    ]);
+  });
+  describe("tests 2 to 4: getPersonsNumbersByType", () => {
+    const testValues = [
+      // firstname,lastname,type, expected
+      ["Matt", "River", "mobile", ["0453341223"]],
+      ["Matt", "River", "home", ["00110011"]],
+      ["Matt", "River", "x", []],
+      ["Matt", "x", "mobile", []],
+      ["x", "River", "mobile", []],
+      ["x", "y", "z", []],
+    ];
+    test.each(testValues)(
+      "getPersonsNumbersByType('%s','%s','%s')returns %s",
+      (firstname, lastname, type, expected) => {
+        expect(
+          register.getPersonsNumberByType(firstname, lastname, type)
+        ).toEqual(expected);
+      }
+    );
+  });
+
+  describe("test 5: missing parameter throws an exception", () => {
+    test("one parameter missing", () => {
+      expect(() => register.getPersonsNumberByType("Matt", "River")).toThrow(
+        "missing parameter"
+      );
+    });
+    test("two parameters missing", () => {
+      expect(() => register.getPersonsNumberByType("Matt")).toThrow(
+        "missing parameter"
+      );
+    });
+    test("all parameters missing", () => {
+      expect(() => register.getPersonsNumberByType()).toThrow(
+        "missing parameter"
+      );
+    });
+  });
+});
