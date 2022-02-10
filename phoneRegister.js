@@ -36,5 +36,25 @@ module.exports = class PhoneRegister {
     } else {
       throw new Error("missing parameter");
     }
+  } //end of getPersonsNumberByType
+  getAllNumbersByType(type) {
+    if (!type) throw new Error("missing parameter");
+    const allNumbers = [];
+    for (let person of this.phoneRegister) {
+      for (let phone of person.phones) {
+        if (phone.type === type) {
+          const obj = {
+            firstname: person.firstname,
+            lastname: person.lastname,
+            number: {
+              type: phone.type,
+              tel: phone.number,
+            },
+          };
+          allNumbers.push(obj);
+        }
+      }
+    }
+    return allNumbers;
   }
 }; //end of class

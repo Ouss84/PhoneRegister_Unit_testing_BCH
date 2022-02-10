@@ -166,3 +166,132 @@ describe("getPersonsNumbersByType(firstname,lastname,type)", () => {
     });
   });
 });
+
+describe("getAllNumbersByType(type)", () => {
+  const register = new PhoneRegister(phones);
+  // with test each
+  describe("test 1:getAllNumbersByType with types: home, mobile, work and x", () => {
+    const expectedHome = [
+      {
+        firstname: "Leila",
+        lastname: "Hökki",
+        number: {
+          type: "home",
+          tel: "12345678",
+        },
+      },
+      {
+        firstname: "Matt",
+        lastname: "River",
+        number: {
+          type: "home",
+          tel: "00110011",
+        },
+      },
+    ];
+    const expectedMobile = [
+      {
+        firstname: "Matt",
+        lastname: "River",
+        number: {
+          type: "mobile",
+          tel: "0453341223",
+        },
+      },
+    ];
+    const expectedWork = [
+      {
+        firstname: "Leila",
+        lastname: "Hökki",
+        number: { type: "work", tel: "22112211" },
+      },
+      {
+        firstname: "Leila",
+        lastname: "Hökki",
+        number: { type: "work", tel: "33993399" },
+      },
+      {
+        firstname: "Matt",
+        lastname: "River",
+        number: { type: "work", tel: "3393234444" },
+      },
+    ];
+    const testValues = [
+      ["home", expectedHome],
+      ["mobile", expectedMobile],
+      ["work", expectedWork],
+      ["x", []],
+    ];
+    test.each(testValues)(
+      "testing: getAllNumbersByType('%s')",
+      (type, expected) => {
+        expect(register.getAllNumbersByType(type)).toEqual(expected);
+      }
+    );
+  }); // end of test 1: testing with test.each
+
+  //seperate testing
+  // describe("test1: testing individually", () => {
+  //   test("type home returns first phones of the phones array", () => {
+  //     const expected = [
+  //       {
+  //         firstname: "Leila",
+  //         lastname: "Hökki",
+  //         number: {
+  //           type: "home",
+  //           tel: "12345678",
+  //         },
+  //       },
+  //       {
+  //         firstname: "Matt",
+  //         lastname: "River",
+  //         number: {
+  //           type: "home",
+  //           tel: "00110011",
+  //         },
+  //       },
+  //     ];
+  //     expect(register.getPersonsNumberByType("home")).toEqual(expected);
+  //   });
+  //   test("type:mobile returns only object in the array", () => {
+  //     expect(register.getAllNumbersByType("mobile")).toEqual([
+  //       {
+  //         firstname: "Matt",
+  //         lastname: "River",
+  //         number: {
+  //           type: "mobile",
+  //           tel: "0453341223",
+  //         },
+  //       },
+  //     ]);
+  //   });
+  //   test("type: work", () => {
+  //     const expected = [
+  //       {
+  //         firstname: "Leila",
+  //         lastname: "Hökki",
+  //         number: { type: "work", tel: "87654321" },
+  //       },
+  //       {
+  //         firstname: "Leila",
+  //         lastname: "Hökki",
+  //         number: { type: "work", tel: "05040302" },
+  //       },
+  //       {
+  //         firstname: "Matt",
+  //         lastname: "River",
+  //         number: { type: "work", tel: "32145678" },
+  //       },
+  //     ];
+  //     expect(register.getAllNumbersByType("work")).toEqual(expected);
+  //   });
+  //   test("if type doesn't exist", () => {
+  //     expect(register.getAllNumbersByType("x")).toEqual([]);
+  //   });
+  // }); //end of test 1 individually
+  describe("test 2: missing parameter", () => {
+    test("missing type throws an exception", () => {
+      expect(() => register.getAllNumbersByType()).toThrow("missing parameter");
+    });
+  }); // end of test2: missing parameter
+}); //end of getAllNumbersByType

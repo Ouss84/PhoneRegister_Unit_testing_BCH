@@ -25,7 +25,7 @@ if no number with given type is found [] is returned, getPersonsNumbersByType("M
 
 Before tests, create register object from PhoneRegister with the default data
 
-## Test 1: get with parameters Leila, Hökki, work
+### Test 1: get with parameters Leila, Hökki, work
 
 ```js
 register.getPersonsNumbersByType("Leila", "Hökki", "work");
@@ -37,7 +37,7 @@ returns
 ["22112211", "33993399"]
 ```
 
-## Test 2: get with parameters Matt, River, mobile
+### Test 2: get with parameters Matt, River, mobile
 
 ```js
 register.getPersonsNumbersByType("Matt", "River", "mobile");
@@ -49,7 +49,7 @@ returns
 ["0453341223"]
 ```
 
-## Test 3: get with parameters Matt, River, home
+### Test 3: get with parameters Matt, River, home
 
 ```js
 register.getPersonsNumbersByType("Matt", "River", "home");
@@ -61,7 +61,7 @@ returns
 ["00110011"]
 ```
 
-## Test 4: using wrong type or name returns an empty array
+### Test 4: using wrong type or name returns an empty array
 
 ```js
 register.getPersonsNumbersByType("Matt", "River", "x");
@@ -76,7 +76,7 @@ returns
 []
 ```
 
-## test 5: missing parameter throws an exception
+### test 5: missing parameter throws an exception
 
 ```js
 register.getPersonsNumberByType("Matt", "River");
