@@ -19,5 +19,22 @@ module.exports = class PhoneRegister {
       }
     }
     return types;
+  } //end of getTypes
+  getPersonsNumberByType(firstname, lastname, type) {
+    if (firstname && lastname && type) {
+      const numbersFound = [];
+      for (let person of this.phoneRegister) {
+        if (person.firstname === firstname && person.lastname === lastname) {
+          for (let phone of person.phones) {
+            if (phone.type === type) {
+              numbersFound.push(phone.number);
+            }
+          }
+        }
+      }
+      return numbersFound;
+    } else {
+      throw new Error("missing parameter");
+    }
   }
-};
+}; //end of class
